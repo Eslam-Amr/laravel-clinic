@@ -37,10 +37,17 @@
                     <div class="d-flex gap-3 flex-wrap justify-content-center" role="group">
                         <a type="button" class="btn btn-outline-light navigation--button" href="{{ route('home.index') }}">Home</a>
                         <a type="button" class="btn btn-outline-light navigation--button"
-                            href="{{ route('major.index') }}">majors</a>
+                        href="{{ route('major.index') }}">majors</a>
                         <a type="button" class="btn btn-outline-light navigation--button"
-                            href="{{ route('doctor.index') }}">Doctors</a>
+                        href="{{ route('doctor.index') }}">Doctors</a>
+                   @auth
+                   <a type="button" class="btn btn-outline-light navigation--button" href="{{ route('login.logout') }}">logout</a>
+
+                   @endauth
+                        @guest
                         <a type="button" class="btn btn-outline-light navigation--button" href="{{ route('login.index') }}">login</a>
+
+                        @endguest
                     </div>
                 </div>
             </div>
@@ -72,8 +79,15 @@
                     <a href="{{ route('home.index') }}" class="link text-white">Home</a>
                     <a href="{{ route('major.index') }}" class="link text-white">Majors</a>
                     <a href="{{ route('doctor.index') }}" class="link text-white">Doctors</a>
+                    @auth
+                    <a href="{{ route('login.logout') }}" class="link text-white">Logout</a>
+
+                    @endauth
+                    @guest
+
                     <a href="{{ route('login.index') }}" class="link text-white">Login</a>
                     <a href="{{ route('register.index') }}" class="link text-white">Register</a>
+                    @endguest
                     <a href="{{ route('contact.index') }}" class="link text-white">Contact</a>
                 </div>
             </div>

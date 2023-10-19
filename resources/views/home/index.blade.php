@@ -33,7 +33,7 @@
                 @foreach ($majors as $major )
 
                 <div class="card p-2" style="width: 18rem;">
-                    <img src="{{ $major->image }}" class="card-img-top rounded-circle card-image-circle"
+                    <img src="{{$major->image[0]==='h'?  $major->image :  asset('uplode/' . $major->image) }}" class="card-img-top rounded-circle card-image-circle"
                         alt="major">
                     <div class="card-body d-flex flex-column gap-1 justify-content-center">
                         <h4 class="card-title fw-bold text-center">{{ $major->title }}</h4>
@@ -59,8 +59,8 @@
 
                         <li class="splide__slide">
                             <div class="card p-2" style="width: 18rem;">
-                                <img src="{{ $doctor->image }}" class="card-img-top rounded-circle card-image-circle"
-                                    alt="major">
+                                <img src="{{$doctor->image[0]==='h'?  $doctor->image :  asset('doctorImage/' . $doctor->image) }}" class="card-img-top rounded-circle card-image-circle"
+                                    alt="doctor">
                                 <div class="card-body d-flex flex-column gap-1 justify-content-center">
                                     <h4 class="card-title fw-bold text-center">{{ $doctor->name }}</h4>
                                     <h6 class="card-title fw-bold text-center">{{ $doctor->title }}</h6>

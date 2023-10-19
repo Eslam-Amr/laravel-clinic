@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\major;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,7 +23,8 @@ class doctorFactory extends Factory
             'email' => fake()->email(),
             'bio'=>fake()->paragraph(1),
             'image'=>fake()->imageUrl(),
-            'major_id'=>fake()->numberBetween(1,10)
+            // 'major_id'=>fake()->numberBetween(1,10)
+            'major_id'=>major::inRandomOrder()->first()->id
         ];
     }
 }

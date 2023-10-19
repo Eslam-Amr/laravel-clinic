@@ -19,6 +19,18 @@
             </li>
           </ol>
         </nav>
+        @if(session()->has('message'))
+        <div class="alert alert-success" id="alert">
+
+            {{ session()->get('message') }}
+        </div>
+            <script type="text/javascript">
+            document.ready(setTimeout(function(){
+                document.getElementById('alert').remove()
+            },3000))
+            </script>
+        @endif
+
         <div class="d-flex flex-column gap-3 details-card doctor-details">
           <div class="details d-flex gap-2 align-items-center">
             <img
@@ -34,23 +46,23 @@
             </div>
           </div>
           <hr />
-          <form class="form">
+          <form class="form" action="{{ route('doctor.booking',$doctor->id) }}">
             <div class="form-items">
               <div class="mb-3">
                 <label class="form-label required-label" for="name">Name</label>
-                <input type="text" class="form-control" id="name" required />
+                <input type="text" class="form-control" name="name" id="name" required />
               </div>
               <div class="mb-3">
                 <label class="form-label required-label" for="phone"
                   >Phone</label
                 >
-                <input type="tel" class="form-control" id="phone" required />
+                <input type="tel" class="form-control" name="phone" id="phone" required />
               </div>
               <div class="mb-3">
                 <label class="form-label required-label" for="email"
                   >Email</label
                 >
-                <input type="email" class="form-control" id="email" required />
+                <input type="email" class="form-control" name="email" id="email" required />
               </div>
             </div>
             <button type="submit" class="btn btn-primary">
@@ -61,5 +73,5 @@
       </div>
     </div>
 
-@endsection
+    @endsection
 

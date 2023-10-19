@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->string('image');
+            $table->string('image')->nullable()->default('1.jpeg');
             $table->string('bio');
             $table->timestamps();
             $table->foreignId('major_id')->constrained("majors")->cascadeOnDelete()->cascadeOnUpdate();

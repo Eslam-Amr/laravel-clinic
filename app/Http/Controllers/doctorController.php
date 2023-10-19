@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\booking;
 use App\Models\doctor;
 use Illuminate\Http\Request;
 
@@ -23,5 +24,22 @@ class doctorController extends Controller
         $doctor=doctor::find($id);
         // dd($doctor);
         return view('doctor.detalis',['doctor'=>$doctor]);
+    }
+    function docBook($id,Request $request){
+        // $id=request()->id;
+        // dd($id,$request->all());
+booking::create([
+    'name'=>$request->name,
+    'email'=>$request->email,
+    'phone'=>$request->phone,
+    'date'=>date("d/m/y"),
+    'doctor_id'=>$id,
+    'status'=>"pending",
+]);
+        // $doctor=doctor::find($id);
+        // $doctor=doctor::find($id);
+        // dd($doctor);
+        // return view('doctor.booking');
+        return back()->with('message','booking done successfly');
     }
 }
